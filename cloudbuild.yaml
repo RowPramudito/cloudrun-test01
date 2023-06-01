@@ -47,7 +47,6 @@ steps:
         -e DB_PASSWORD=$$DB_PASSWORD 
         -s $_INSTANCE_CONNECTION_NAME \
         -- php /app/artisan migrate --force
-    secretEnv: ['DB_PASSWORD', 'DB_DATABASE', 'DB_USERNAME', 'DB_HOST'] 
     waitFor:
       - Build
       - Push

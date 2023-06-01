@@ -16,6 +16,16 @@ steps:
       - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA'
     id: Push
 
+  - name: 'gcr.io/cloud-builders/composer'
+    args: ['install', '--no-dev']
+
+  - name: 'gcr.io/cloud-builders/php'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        php artisan key:generate
+
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
     args:
       - run

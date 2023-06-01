@@ -2,6 +2,7 @@
 
 sed -i "s,LISTEN_PORT,$PORT,g" /etc/nginx/nginx.conf
 
+composer install
 php artisan key:generate
 
 php-fpm -D
